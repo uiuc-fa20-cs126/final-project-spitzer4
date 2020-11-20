@@ -11,7 +11,6 @@
 
 class database : public ci::app::App {
 public:
-    database();
     void setup();
     void update();
     void draw();
