@@ -9,11 +9,14 @@ void database::setup() {
 }
 
 void database::draw() {
+    ci::gl::clear();
     ci::Color(0, 0, 1);
-    ci::Rectf rectf(0, 0, 20, 20);
+    ci::Rectf rectf(100, 100, 500, 500);
     ci::gl::drawStrokedRect(rectf);
 }
 
 void database::update() {
 
 }
+
+CINDER_APP(database, ci::app::RendererGl)
