@@ -6,8 +6,9 @@
 #include <sstream>
 #include <iostream>
 #include <vector>
+#include <map>
 
-void read_csv() {
+std::map<std::string, std::vector<std::string>> read_csv() {
     std::ifstream data("/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/data/routes.csv");
     std::string value;
     std::string value2;
@@ -29,6 +30,8 @@ void read_csv() {
 
     std::vector<std::string> line_values;
 
+    std::map<std::string, std::vector<std::string>> route_map;
+
     getline(data, value, '\n');
 
     while (data.good()) {
@@ -46,6 +49,12 @@ void read_csv() {
         route_color.push_back(value2);
         line_values.clear();
     }
+
+    for (size_t j = 0; j < route_id.size(); j++) {
+        route_map[route_id[j]] = {route_short_name[j], route_long_name[j], route_color[j]};
+    }
+
+    return route_map;
 }
 
 
