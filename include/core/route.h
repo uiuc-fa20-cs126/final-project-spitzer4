@@ -9,7 +9,7 @@
 
 class Route {
 public:
-    Route();
+    Route(std::string id, std::string shortName, std::string longName, std::string color);
     std::string id;
     std::string shortName;
     std::string longName;
