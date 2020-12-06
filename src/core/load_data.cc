@@ -86,24 +86,25 @@ void create_routes_map() {
     while (data2.good()) {
         getline(data2, line2, '\n');
 
-        while ((k = line2.find(delim)) != std::string::npos) {
+        while ((k = line2.find(delim2)) != std::string::npos) {
             token2 = line2.substr(0, k);
             line_values2.push_back(token2);
             line2.erase(0, k + delim2.length());
         }
 
         route_id2.push_back(line_values2.at(route_id_index2));
-        trip_id.push_back(line);
+        trip_id.push_back(line2);
         line_values2.clear();
     }
 
     for (size_t i = 0; i < route_id2.size(); i++) {
+//        trips_map.find(route_id2[i]) = {trip_id[i]};
         trips_map.insert(std::make_pair(route_id2[i], trip_id[i]));
     }
 
-    for (std::map<std::string, std::string>::const_iterator it1 = trips_map.begin(); it1 != trips_map.end(); ++it1) {
-        std::cout << it1->first << " " << it1->second << "\n";
-    }
+//    for (std::map<std::string, std::string>::const_iterator it1 = trips_map.begin(); it1 != trips_map.end(); ++it1) {
+//        std::cout << it1->first << " " << it1->second << "\n";
+//    }
 
     std::map<std::string, std::vector<std::string>> id_to_matching_trip_ids;
     std::vector<std::string> list_of_matching_trip_ids;
@@ -112,10 +113,22 @@ void create_routes_map() {
         for (size_t j = 0; j < route_id2.size(); j++) {
             if (values -> first == route_id2[j]) {
                 list_of_matching_trip_ids.push_back(values -> second);
+                id_to_matching_trip_ids.insert(std::make_pair(route_id2[j], list_of_matching_trip_ids));
             }
-            id_to_matching_trip_ids.insert(std::make_pair(route_id2[j], list_of_matching_trip_ids));
+//            id_to_matching_trip_ids.insert(std::make_pair(route_id2[j], list_of_matching_trip_ids));
         }
     }
+
+    for (std::map<std::string, std::vector<std::string>>::const_iterator it2 = id_to_matching_trip_ids.begin(); it2 != id_to_matching_trip_ids.end(); ++it2) {
+        auto current_route_id = route_map.find(it2->first);
+        route_map.insert(current_route_id, it2->second);
+        for (size_t m = 0; m < route_id.size(); m++) {
+            if (it2->first == route_id[m]) {
+                route_map[route_id[m]] = {route_short_name[m], route_long_name[m], route_color[m], it2->second};
+            }
+        }
+    }
+
     for (std::map<std::string, std::vector<std::string>>::const_iterator it = id_to_matching_trip_ids.begin(); it != id_to_matching_trip_ids.end(); ++it) {
         for (size_t l = 0; l < it->second.size(); l++) {
             std::cout << it->first << it->second.at(l) << "\n";
