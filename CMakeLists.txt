@@ -52,7 +52,9 @@ include("${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake")
 #list(APPEND CORE_SOURCE_FILES /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/ideal-gas-spitzer4/src/visualizer/simulation.cc)
 
 list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
-        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/load_data.cc)
+        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/load_data.cc
+        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/route.cc
+        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/trip.cc)
         #/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/ideal-gas-spitzer4/src/core/particle_controller.cc)
 
 #list(APPEND TEST_FILES tests/rename_this_test_file.cc)
