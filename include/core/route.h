@@ -13,13 +13,16 @@ public:
     std::string shortName;
     std::string longName;
     std::string color;
+    std::string trip_id;
 
-    Route(std::string id, std::string shortName, std::string longName, std::string color) {
+    Route(std::string id, std::string shortName, std::string longName, std::string color, std::string trip_id) {
         this->id = id;
         this->shortName = shortName;
         this->longName = longName;
         this->color = color;
+        this->trip_id = trip_id;
     };
+
     std::string getId();
 
 };

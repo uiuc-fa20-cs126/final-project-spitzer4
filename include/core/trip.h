@@ -11,11 +11,11 @@ class Trip {
 public:
     std::string route_id;
     std::string trip_id;
-    Trip(std::string newRouteId, std::string newTripId) {
-        this->route_id = newRouteId;
-        this->trip_id = newTripId;
-    }
-
+//    Trip(std::string newRouteId, std::string newTripId) {
+//        this->route_id = newRouteId;
+//        this->trip_id = newTripId;
+//    }
+    Trip(std::string, std::string);
 private:
 
 };
