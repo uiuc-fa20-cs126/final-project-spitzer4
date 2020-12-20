@@ -69,6 +69,14 @@ ci_make_app(
         INCLUDES        include
 )
 
+ci_make_app(
+        APP_NAME        database-test
+        CINDER_PATH     ${CINDER_PATH}
+        SOURCES         tests/tests_main.cc ${SOURCE_FILES} ${TEST_FILES}
+        INCLUDES        include
+        LIBRARIES       catch2
+)
+
 if(MSVC)
     set_property(TARGET ideal-gas-test APPEND_STRING PROPERTY LINK_FLAGS " /SUBSYSTEM:CONSOLE")
 endif()

@@ -10,7 +10,7 @@ std::string trips_file_path = "/Users/kaleighspitzer/CLionProjects/~Cinder/my-pr
 
 std::map<std::string, Route> route_id_to_route_map;
 
-std::map<std::string, std::string> create_trip_map() {
+std::map<std::string, std::string> Data::create_trip_map() {
     std::map<std::string, std::string> route_id_to_trip_id_map;
 
     std::ifstream data2(trips_file_path);
@@ -49,8 +49,8 @@ std::map<std::string, std::string> create_trip_map() {
     return route_id_to_trip_id_map;
 }
 
-void create_route_map() {
-    std::map<std::string, std::string> trips_map = create_trip_map();
+std::map<std::string, Route> Data::create_route_map() {
+    std::map<std::string, std::string> trips_map = Data::create_trip_map();
 
     std::ifstream data(routes_file_path);
     std::string first_line;
@@ -102,9 +102,11 @@ void create_route_map() {
     for (std::map<std::string, Route>::const_iterator it = route_id_to_route_map.begin(); it != route_id_to_route_map.end(); ++it) {
         std::cout << it->first << " " << it->second.id << " " << it->second.longName << " " << it->second.shortName << " " << it->second.color << "\n" << it->second.trip_id << "\n";
     }
+
+    return route_id_to_route_map;
 }
 
-int main() {
-    create_route_map();
+int Data::main() {
+    Data::create_route_map();
     return 0;
 }
