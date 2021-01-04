@@ -10,45 +10,53 @@ std::string trips_file_path = "/Users/kaleighspitzer/CLionProjects/~Cinder/my-pr
 
 std::map<std::string, Route> route_id_to_route_map;
 
+/**
+ * Reads in and collects data from the trips.csv file.
+ * @return a map of the route ID and corresponding trip ID.
+ */
 std::map<std::string, std::string> Data::create_trip_map() {
     std::map<std::string, std::string> route_id_to_trip_id_map;
 
     std::ifstream data2(trips_file_path);
-    std::string first_line2;
-    std::string line2;
+    std::string first_line;
+    std::string line;
 
-    std::string delim2 = ",";
+    std::string delim = ",";
     size_t k = 0;
-    std::string token2;
+    std::string token;
 
-    std::vector<std::string> line_values2;
+    std::vector<std::string> line_values;
 
-    std::string route_id2;
+    std::string route_id;
     std::string trip_id;
 
     size_t route_id_index2 = 0;
 
-    getline(data2, first_line2, '\n');
+    getline(data2, first_line, '\n');
 
     while (data2.good()) {
-        getline(data2, line2, '\n');
+        getline(data2, line, '\n');
 
-        while ((k = line2.find(delim2)) != std::string::npos) {
-            token2 = line2.substr(0, k);
-            line_values2.push_back(token2);
-            line2.erase(0, k + delim2.length());
+        while ((k = line.find(delim)) != std::string::npos) {
+            token = line.substr(0, k);
+            line_values.push_back(token);
+            line.erase(0, k + delim.length());
         }
 
-        route_id2 = line_values2.at(route_id_index2);
-        trip_id = line2;
-        line_values2.clear();
+        route_id = line_values.at(route_id_index2);
+        trip_id = line;
+        line_values.clear();
 
-        route_id_to_trip_id_map.insert(std::make_pair(route_id2, trip_id));
+        route_id_to_trip_id_map.insert(std::make_pair(route_id, trip_id));
     }
 
     return route_id_to_trip_id_map;
 }
 
+/**
+ * Reads in and collects data from the routes.csv file.
+ * @return a map of a route ID to the corresponding route attributes.
+ */
 std::map<std::string, Route> Data::create_route_map() {
     std::map<std::string, std::string> trips_map = Data::create_trip_map();
 
@@ -98,9 +106,6 @@ std::map<std::string, Route> Data::create_route_map() {
 
         Route route(route_id, route_short_name, route_long_name, route_color, trip_id);
         route_id_to_route_map.insert(std::make_pair(route_id, route));
-    }
-    for (std::map<std::string, Route>::const_iterator it = route_id_to_route_map.begin(); it != route_id_to_route_map.end(); ++it) {
-        std::cout << it->first << " " << it->second.id << " " << it->second.longName << " " << it->second.shortName << " " << it->second.color << "\n" << it->second.trip_id << "\n";
     }
 
     return route_id_to_route_map;
