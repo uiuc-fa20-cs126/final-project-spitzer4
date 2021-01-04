@@ -5,8 +5,8 @@
 #include "/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/include/core/trip.h"
 #include "/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/include/core/load_data.h"
 
-std::string routes_file_path = "/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/data/routes.csv";
-std::string trips_file_path = "/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/data/trips.csv";
+std::string kRoutesFilePath = "/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/data/routes.csv";
+std::string kTripsFilePath = "/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/data/trips.csv";
 
 std::map<std::string, Route> route_id_to_route_map;
 
@@ -14,10 +14,10 @@ std::map<std::string, Route> route_id_to_route_map;
  * Reads in and collects data from the trips.csv file.
  * @return a map of the route ID and corresponding trip ID.
  */
-std::map<std::string, std::string> Data::create_trip_map() {
+std::map<std::string, std::string> Data::CreateTripMap() {
     std::map<std::string, std::string> route_id_to_trip_id_map;
 
-    std::ifstream data2(trips_file_path);
+    std::ifstream data(kTripsFilePath);
     std::string first_line;
     std::string line;
 
@@ -32,10 +32,10 @@ std::map<std::string, std::string> Data::create_trip_map() {
 
     size_t route_id_index2 = 0;
 
-    getline(data2, first_line, '\n');
+    getline(data, first_line, '\n');
 
-    while (data2.good()) {
-        getline(data2, line, '\n');
+    while (data.good()) {
+        getline(data, line, '\n');
 
         while ((k = line.find(delim)) != std::string::npos) {
             token = line.substr(0, k);
@@ -57,10 +57,10 @@ std::map<std::string, std::string> Data::create_trip_map() {
  * Reads in and collects data from the routes.csv file.
  * @return a map of a route ID to the corresponding route attributes.
  */
-std::map<std::string, Route> Data::create_route_map() {
-    std::map<std::string, std::string> trips_map = Data::create_trip_map();
+std::map<std::string, Route> Data::CreateRouteMap() {
+    std::map<std::string, std::string> trips_map = Data::CreateTripMap();
 
-    std::ifstream data(routes_file_path);
+    std::ifstream data(kRoutesFilePath);
     std::string first_line;
     std::string line;
 
@@ -112,6 +112,6 @@ std::map<std::string, Route> Data::create_route_map() {
 }
 
 int Data::main() {
-    Data::create_route_map();
+    Data::CreateRouteMap();
     return 0;
 }

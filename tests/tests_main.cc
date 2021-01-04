@@ -7,18 +7,18 @@
 #include "/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/include/core/load_data.h"
 
 TEST_CASE("Number of routes is correct") {
-    std::map<std::string, Route> route_id_to_route_map = Data::create_route_map();
+    std::map<std::string, Route> route_id_to_route_map = Data::CreateRouteMap();
     REQUIRE(route_id_to_route_map.size() == 102);
 }
 
 TEST_CASE("None of the file headings are read in") {
-    std::map<std::string, Route> route_id_to_route_map = Data::create_route_map();
+    std::map<std::string, Route> route_id_to_route_map = Data::CreateRouteMap();
     std::map<std::string, Route>::iterator it = route_id_to_route_map.find("route_id");
     REQUIRE(it == route_id_to_route_map.end());
 }
 
 TEST_CASE("Route ID attributes are correct") {
-    std::map<std::string, Route> route_id_to_route_map = Data::create_route_map();
+    std::map<std::string, Route> route_id_to_route_map = Data::CreateRouteMap();
     std::map<std::string, Route>::iterator it = route_id_to_route_map.find("10W GOLD ALT");
     REQUIRE(it->second.shortName == "10");
     REQUIRE(it->second.longName == "Gold Alternate");

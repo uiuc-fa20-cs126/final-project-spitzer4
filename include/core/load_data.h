@@ -15,8 +15,8 @@
 class Data {
     public:
         static int main();
-        static std::map<std::string, std::string> create_trip_map();
-        static std::map<std::string, Route> create_route_map();
+        static std::map<std::string, std::string> CreateTripMap();
+        static std::map<std::string, Route> CreateRouteMap();
     private:
 };
 
