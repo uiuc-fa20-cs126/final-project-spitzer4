@@ -19,7 +19,7 @@ if(MSVC)
     add_compile_options(/W3 /WX)
 else()
     # lots of warnings and all warnings as errors
-    #add_compile_options(-Wall -Wpedantic -Werror -Wno-reorder)
+    add_compile_options(-Wall -Wpedantic -Werror -Wno-reorder)
 endif()
 
 # FetchContent added in CMake 3.11, downloads during the configure step
@@ -55,9 +55,12 @@ list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
         /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/load_data.cc
         /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/route.cc
         /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/trip.cc)
-        #/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/ideal-gas-spitzer4/src/core/particle_controller.cc)
 
-#list(APPEND TEST_FILES tests/rename_this_test_file.cc)
+list(APPEND TEST_FILES /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/tests/tests_main.cc
+        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/load_data.cc
+        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/route.cc
+        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/trip.cc)
+add_executable(test-database ${TEST_FILES})
 
 add_executable(load_data src/core/load_data.cc ${CORE_SOURCE_FILES})
 #target_include_directories(train-model PRIVATE include)
@@ -66,17 +69,17 @@ ci_make_app(
         APP_NAME        database
         CINDER_PATH     ${CINDER_PATH}
         SOURCES         /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/visualizer/database.cc ${SOURCE_FILES}
-        INCLUDES        include
+        INCLUDES        /Users/kaleighspitzer/CLionProjects/~Cinder/include
 )
 
 ci_make_app(
         APP_NAME        database-test
         CINDER_PATH     ${CINDER_PATH}
         SOURCES         tests/tests_main.cc ${SOURCE_FILES} ${TEST_FILES}
-        INCLUDES        include
+        INCLUDES        /Users/kaleighspitzer/CLionProjects/~Cinder/include
         LIBRARIES       catch2
 )
 
 if(MSVC)
-    set_property(TARGET ideal-gas-test APPEND_STRING PROPERTY LINK_FLAGS " /SUBSYSTEM:CONSOLE")
+    set_property(TARGET database-test APPEND_STRING PROPERTY LINK_FLAGS " /SUBSYSTEM:CONSOLE")
 endif()

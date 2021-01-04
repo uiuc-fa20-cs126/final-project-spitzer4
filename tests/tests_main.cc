@@ -3,8 +3,7 @@
 //
 
 #define CATCH_CONFIG_MAIN
-#include <catch2/catch.hpp>
-
+#include "/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/cmake-build-debug/_deps/catch2-src/single_include/catch2/catch.hpp"
 #include "/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/include/core/load_data.h"
 
 TEST_CASE("Number of routes is correct") {
