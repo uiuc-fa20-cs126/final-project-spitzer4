@@ -19,7 +19,7 @@ if(MSVC)
     add_compile_options(/W3 /WX)
 else()
     # lots of warnings and all warnings as errors
-    add_compile_options(-Wall -Wpedantic -Werror -Wno-reorder)
+    add_compile_options(-Werror -Wno-reorder)
 endif()
 
 # FetchContent added in CMake 3.11, downloads during the configure step
@@ -56,10 +56,10 @@ list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
         /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/route.cc
         /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/trip.cc)
 
-list(APPEND TEST_FILES /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/tests/tests_main.cc
-        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/load_data.cc
-        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/route.cc
-        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/trip.cc)
+list(APPEND TEST_FILES /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/tests/tests_main.cc)
+#        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/load_data.cc
+#        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/route.cc
+#        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/trip.cc)
 add_executable(test-database ${TEST_FILES})
 
 add_executable(load_data src/core/load_data.cc ${CORE_SOURCE_FILES})
