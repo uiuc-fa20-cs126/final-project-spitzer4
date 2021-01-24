@@ -3,13 +3,12 @@
 //
 
 #include "../../include/visualizer/database.h"
-#include "../../include/core/load_data.h"
 
-void database::setup() {
+void visualizer::database::setup() {
     setWindowSize(600, 800);
 }
 
-void database::draw() {
+void visualizer::database::draw() {
     ci::gl::clear();
     ci::Color(0, 0, 1);
     ci::Rectf rectf(100, 100, 500, 500);
@@ -22,7 +21,7 @@ void database::draw() {
     }
 }
 
-void database::update() {
+void visualizer::database::update() {
 }
 
-CINDER_APP(database, ci::app::RendererGl)
+CINDER_APP(visualizer::database, ci::app::RendererGl)

@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/Users/kaleighspitzer/CLionProjects/Cinder/my-projects/final-project-spitzer4/tests/tests_main.cc
+/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/cmake-build-debug/_deps/catch2-src/single_include/catch2/catch.hpp
+-
+/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/include/core/load_data.h
+-
+
 /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/cmake-build-debug/_deps/catch2-src/single_include/catch2/catch.hpp
 TargetConditionals.h
 -
@@ -603,14 +609,14 @@ map
 -
 ../../include/core/route.h
 /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/include/core/route.h
+/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/include/core/trip.h
+-
 
 /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/include/core/route.h
 string
 -
 
-/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/tests/tests_main.cc
-/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/cmake-build-debug/_deps/catch2-src/single_include/catch2/catch.hpp
--
-/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/include/core/load_data.h
+/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/include/core/trip.h
+string
 -
 

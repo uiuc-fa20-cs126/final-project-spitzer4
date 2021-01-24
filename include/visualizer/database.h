@@ -7,12 +7,17 @@
 #include "/Users/kaleighspitzer/CLionProjects/~Cinder/include/cinder/app/App.h"
 #include "/Users/kaleighspitzer/CLionProjects/~Cinder/include/cinder/app/RendererGl.h"
 #include "/Users/kaleighspitzer/CLionProjects/~Cinder/include/cinder/gl/gl.h"
+#include "../../include/core/load_data.h"
 
-class database : public ci::app::App {
-public:
-    void setup();
-    void update();
-    void draw();
-};
+namespace visualizer {
+    class database : public ci::app::App {
+    public:
+        void setup();
+
+        void update();
+
+        void draw();
+    };
+} // namespace visualizer
 
 #endif //FINAL_PROJECT2_DATABASE_H

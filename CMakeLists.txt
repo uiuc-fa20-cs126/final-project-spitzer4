@@ -44,39 +44,38 @@ if(NOT catch2_POPULATED)
     target_include_directories(catch2 INTERFACE ${catch2_SOURCE_DIR}/single_include)
 endif()
 
+message(CINDER_PATH)
 get_filename_component(CINDER_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../" ABSOLUTE)
 get_filename_component(APP_PATH "${CMAKE_CURRENT_SOURCE_DIR}/" ABSOLUTE)
 
 include("${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake")
 
-#list(APPEND CORE_SOURCE_FILES /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/ideal-gas-spitzer4/src/visualizer/simulation.cc)
+list(APPEND CORE_SOURCE_FILES src/core/load_data.cc src/core/route.cc src/core/trip.cc)
 
 list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
-        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/load_data.cc
-        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/route.cc
-        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/trip.cc)
+        src/visualizer/database.cc)
 
-list(APPEND TEST_FILES /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/tests/tests_main.cc)
+list(APPEND TEST_FILES /Users/kaleighspitzer/CLionProjects/Cinder/my-projects/final-project-spitzer4/tests/tests_main.cc)
 #        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/load_data.cc
 #        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/route.cc
 #        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/trip.cc)
 add_executable(test-database ${TEST_FILES})
 
-add_executable(load_data src/core/load_data.cc ${CORE_SOURCE_FILES})
+#add_executable(load_data apps/cinder_app_main.cc ${CORE_SOURCE_FILES})
 #target_include_directories(train-model PRIVATE include)
 
 ci_make_app(
         APP_NAME        database
         CINDER_PATH     ${CINDER_PATH}
-        SOURCES         /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/visualizer/database.cc ${SOURCE_FILES}
-        INCLUDES        /Users/kaleighspitzer/CLionProjects/~Cinder/include
+        SOURCES         apps/cinder_app_main.cc ${SOURCE_FILES}
+        INCLUDES        /Users/kaleighspitzer/CLionProjects/Cinder/include
 )
 
 ci_make_app(
         APP_NAME        database-test
         CINDER_PATH     ${CINDER_PATH}
         SOURCES         tests/tests_main.cc ${SOURCE_FILES} ${TEST_FILES}
-        INCLUDES        /Users/kaleighspitzer/CLionProjects/~Cinder/include
+        INCLUDES        /Users/kaleighspitzer/CLionProjects/Cinder/include
         LIBRARIES       catch2
 )
 
