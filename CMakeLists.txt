@@ -56,13 +56,6 @@ list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
         src/visualizer/database.cc)
 
 list(APPEND TEST_FILES /Users/kaleighspitzer/CLionProjects/Cinder/my-projects/final-project-spitzer4/tests/tests_main.cc)
-#        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/load_data.cc
-#        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/route.cc
-#        /Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/src/core/trip.cc)
-add_executable(test-database ${TEST_FILES})
-
-#add_executable(load_data apps/cinder_app_main.cc ${CORE_SOURCE_FILES})
-#target_include_directories(train-model PRIVATE include)
 
 ci_make_app(
         APP_NAME        database

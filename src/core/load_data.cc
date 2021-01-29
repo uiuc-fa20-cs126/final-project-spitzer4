@@ -2,11 +2,10 @@
 // Created by Kaleigh Spitzer on 11/9/20.
 //
 
-#include "/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/include/core/trip.h"
-#include "/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/include/core/load_data.h"
+#include "../../include/core/load_data.h"
 
-std::string kRoutesFilePath = "/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/data/routes.csv";
-std::string kTripsFilePath = "/Users/kaleighspitzer/CLionProjects/~Cinder/my-projects/final-project2/data/trips.csv";
+std::string kRoutesFilePath = "/Users/kaleighspitzer/CLionProjects/Cinder/my-projects/final-project-spitzer4/data/routes.csv";
+std::string kTripsFilePath = "/Users/kaleighspitzer/CLionProjects/Cinder/my-projects/final-project-spitzer4/data/trips.csv";
 
 std::map<std::string, Route> route_id_to_route_map;
 
@@ -49,7 +48,6 @@ std::map<std::string, std::string> Data::CreateTripMap() {
 
         route_id_to_trip_id_map.insert(std::make_pair(route_id, trip_id));
     }
-
     return route_id_to_trip_id_map;
 }
 
@@ -111,7 +109,7 @@ std::map<std::string, Route> Data::CreateRouteMap() {
     return route_id_to_route_map;
 }
 
-int main() {
-    Data::CreateRouteMap();
-    return 0;
-}
+//int main() {
+//    Data::CreateRouteMap();
+//    return 0;
+//}

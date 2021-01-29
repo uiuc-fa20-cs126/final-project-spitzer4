@@ -17,7 +17,11 @@ class Data {
 //        static int main();
         static std::map<std::string, std::string> CreateTripMap();
         static std::map<std::string, Route> CreateRouteMap();
+//        static std::map<std::string, std::string> route_id_to_trip_id_map;
+//        static std::map<std::string, Route> route_id_to_route_map;
     private:
+//        static std::map<std::string, std::string> route_id_to_trip_id_map;
+//        static std::map<std::string, Route> route_id_to_route_map;
 };
 
 #endif //FINAL_PROJECT_LOAD_DATA_H

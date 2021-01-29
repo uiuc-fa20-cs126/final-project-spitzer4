@@ -4,24 +4,30 @@
 
 #include "../../include/visualizer/database.h"
 
+std::map<std::string, Route> route_map;
+
 void visualizer::database::setup() {
-    setWindowSize(600, 800);
+    cinder::app::AppBase::setWindowSize(600, 800);
+    route_map = Data::CreateRouteMap();
+    interfaceGl = ci::params::InterfaceGl::create(getWindow(), "Bus routes: ", ci::app::toPixels(glm::vec2(200, 400)));
+    for (std::map<std::string, Route>::iterator it = route_map.begin(); it != route_map.end(); ++it) {
+        interfaceGl->addButton(it->first, std::bind(&visualizer::database::button, this));
+    }
+
 }
 
 void visualizer::database::draw() {
     ci::gl::clear();
+//    ci::Rectf rectf(100, 100, 500, 500);
     ci::Color(0, 0, 1);
-    ci::Rectf rectf(100, 100, 500, 500);
-    ci::gl::drawStrokedRect(rectf);
-
-    std::map<std::string, Route> route_map = Data::CreateRouteMap();
-    for (std::map<std::string, Route>::iterator it = route_map.begin(); it != route_map.end(); ++it) {
-        std::string line = it->first + + " " + it->second.longName + " " + it->second.shortName + " " + it->second.color + " " + it->second.trip_id;
-        ci::gl::drawString(line, glm::vec2(700.0f,-150.0f), ci::Color(0, 0, 0), ci::Font("Arial", 90));
-    }
+//    ci::gl::drawStrokedRect(rectf);
+    interfaceGl->draw();
 }
 
 void visualizer::database::update() {
+
 }
 
-CINDER_APP(visualizer::database, ci::app::RendererGl)
+void visualizer::database::button() {
+    interfaceGl->setOptions( "text", "label=`Clicked!`");
+}
