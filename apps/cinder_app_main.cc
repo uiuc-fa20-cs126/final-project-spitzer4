@@ -2,7 +2,6 @@
 
 using visualizer::database;
 
-
 void prepareSettings(database::Settings* settings) {
   settings->setResizable(false);
 }

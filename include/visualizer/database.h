@@ -14,16 +14,22 @@
 namespace visualizer {
     class database : public ci::app::App {
     public:
-        void setup();
+        void setup() override;
 
-        void update();
+        void update() override;
 
-        void draw();
+        void draw() override;
 
         void button();
+
+        void mouseDown(ci::app::MouseEvent event) override;
     private:
 //        std::map<std::string, Route> route_map;
-//        ci::TextBox textBox;
+        ci::TextBox textBox;
+        ci::TextBox long_name_text;
+        ci::TextBox short_name_text;
+        ci::TextBox color_text;
+        ci::TextBox trip_id_text;
         ci::params::InterfaceGlRef interfaceGl;
     };
 } // namespace visualizer
