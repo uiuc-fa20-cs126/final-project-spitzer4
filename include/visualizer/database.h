@@ -20,7 +20,7 @@ namespace visualizer {
 
         void draw() override;
 
-        void button();
+        void button(std::map<std::string, Route>::iterator it);
 
         void mouseDown(ci::app::MouseEvent event) override;
     private:
