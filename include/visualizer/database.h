@@ -31,6 +31,7 @@ namespace visualizer {
         ci::TextBox color_text;
         ci::TextBox trip_id_text;
         ci::params::InterfaceGlRef interfaceGl;
+        ci::params::InterfaceGlRef interfaceMaps;
     };
 } // namespace visualizer
 
