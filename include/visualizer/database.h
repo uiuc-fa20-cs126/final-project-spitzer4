@@ -22,6 +22,8 @@ namespace visualizer {
 
         void button(std::map<std::string, Route>::iterator it);
 
+        void map_button(std::string map_name);
+
         void mouseDown(ci::app::MouseEvent event) override;
     private:
 //        std::map<std::string, Route> route_map;
@@ -32,6 +34,10 @@ namespace visualizer {
         ci::TextBox trip_id_text;
         ci::params::InterfaceGlRef interfaceGl;
         ci::params::InterfaceGlRef interfaceMaps;
+        ci::params::InterfaceGlRef mapImageLayer;
+
+        ci::gl::Texture2dRef map;
+        std::map<std::string, std::string> map_name_to_file;
     };
 } // namespace visualizer
 
