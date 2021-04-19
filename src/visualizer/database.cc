@@ -37,8 +37,9 @@ void visualizer::database::setup() {
 
     interfaceGl = ci::params::InterfaceGl::create(getWindow(), "Bus routes: ", ci::app::toPixels(glm::vec2(200, 800)));
     interfaceMaps = ci::params::InterfaceGl::create(getWindow(), "Maps: ", ci::app::toPixels(glm::vec2(200, 100)));
-    mapImageLayer = ci::params::InterfaceGl::create(getWindow(), "Map", ci::app::toPixels(glm::vec2(800, 600)));
+    mapImageLayer = ci::params::InterfaceGl::create(getWindow(), "Map", ci::app::toPixels(glm::vec2(350, 250)));
     interfaceMaps->setPosition(glm::vec2(950, 50));
+    mapImageLayer->setPosition(glm::vec2(800, 200));
     std::vector<std::string> map_names = {"Weekday Daytime", "Weekday Evening", "Saturday Daytime", "Saturday Evening", "Sunday Daytime", "Sunday Evening"};
     std::vector<std::string> map_files = {"/Users/kaleighspitzer/CLionProjects/Cinder/my-projects/final-project-spitzer4/data/weekday-daytime.png",
                                           "/Users/kaleighspitzer/CLionProjects/Cinder/my-projects/final-project-spitzer4/data/weekday-evening.png",
@@ -75,7 +76,9 @@ void visualizer::database::draw() {
     ci::gl::drawString(short_name_text.getText(), {400, 300}, ci::ColorA(1, 1, 1), ci::Font("Helvetica", 20));
     ci::gl::drawString(color_text.getText(), {400, 400}, ci::ColorA(1, 1, 1), ci::Font("Helvetica", 20));
     ci::gl::drawString(trip_id_text.getText(), {400, 500}, ci::ColorA(1, 1, 1), ci::Font("Helvetica", 20));
+//    ci::gl::translate(ci::vec2(10, 10));
     ci::gl::draw(map);
+//    ci::gl::translate(ci::vec2(10, 10));
 }
 
 void visualizer::database::update() {
@@ -93,6 +96,7 @@ void visualizer::database::button(std::map<std::string, Route>::iterator it) {
     ci::gl::drawString(color_text.getText(), {400, 300}, ci::ColorA(1, 1, 1), ci::Font("Helvetica", 20));
     trip_id_text.setText("Trip ID: " + route.trip_id);
     ci::gl::drawString(trip_id_text.getText(), {400, 400}, ci::ColorA(1, 1, 1), ci::Font("Helvetica", 20));
+    map.reset();
     draw();
 }
 
@@ -100,15 +104,10 @@ void visualizer::database::map_button(std::string map_name) {
     ci::gl::clear();
     std::string image_path = map_name_to_file.at(map_name);
     ci::Surface surface = ci::loadImage(image_path);
-    mapImageLayer->addParam();
-    //    ci::gl::Texture2dRef map = ci::gl::Texture2d::create(surface);
+    map.reset();
     map = ci::gl::Texture2d::create(surface);
-    //    ci::gl::draw(map);
-    draw();
+    ci::gl::draw(map);
 }
 
-void visualizer::database::mouseDown(ci::app::MouseEvent event) {
-
-}
 
 

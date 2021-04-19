@@ -24,9 +24,7 @@ namespace visualizer {
 
         void map_button(std::string map_name);
 
-        void mouseDown(ci::app::MouseEvent event) override;
     private:
-//        std::map<std::string, Route> route_map;
         ci::TextBox textBox;
         ci::TextBox long_name_text;
         ci::TextBox short_name_text;

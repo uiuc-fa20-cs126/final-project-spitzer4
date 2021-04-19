@@ -108,8 +108,3 @@ std::map<std::string, Route> Data::CreateRouteMap() {
 
     return route_id_to_route_map;
 }
-
-//int main() {
-//    Data::CreateRouteMap();
-//    return 0;
-//}
